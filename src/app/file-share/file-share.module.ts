@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MsgChatMainComponent } from './msg-chat-main/msg-chat-main.component';
+import { FileShareMainComponent } from './file-share-main/file-share-main.component';
 
 
 
 @NgModule({
   declarations: [
-    MsgChatMainComponent
+    FileShareMainComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    MsgChatMainComponent
+    FileShareMainComponent
   ]
 })
-export class MsgChatModule { }
+export class FileShareModule { }
