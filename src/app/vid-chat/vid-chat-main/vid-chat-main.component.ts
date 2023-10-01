@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {  } from 'wrtc';
 
 @Component({
   selector: 'app-vid-chat-main',

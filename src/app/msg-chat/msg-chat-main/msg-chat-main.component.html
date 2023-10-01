@@ -1,1 +1,8 @@
-<p>msg-chat-main works!</p>
+<div id="Messages"></div>
+<div id="Write" class="w-screen h-[10vh]">
+    <form (ngSubmit)="sendMessage()">
+        <input type="text" [(ngModel)]="username" class="h-max"/>
+        <input type="text" [(ngModel)]="message" class="h-max" />
+        <input type="submit" value="Send" class="h-max" />
+    </form>
+</div>

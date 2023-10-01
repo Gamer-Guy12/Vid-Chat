@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./msg-chat-main.component.scss']
 })
 export class MsgChatMainComponent {
+  username: String = "Username";
+  message: String = "";
+
+  sendMessage() {
+
+    
+
+  }
 
 }
