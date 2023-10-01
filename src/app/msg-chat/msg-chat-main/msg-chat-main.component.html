@@ -1,8 +1,10 @@
+<p>Hello</p>
+<p *ngIf="sent">Hello</p>
 <div id="Messages"></div>
-<div id="Write" class="w-screen h-[10vh]">
+<div id="Write" class="w-screen h-[10vh] mb-0">
     <form (ngSubmit)="sendMessage()">
-        <input type="text" [(ngModel)]="username" class="h-max"/>
-        <input type="text" [(ngModel)]="message" class="h-max" />
-        <input type="submit" value="Send" class="h-max" />
+        <input type="text" [(ngModel)]="username" class="h-max w-[30vw]" name="username" />
+        <input type="text" [(ngModel)]="message" class="h-max w-[60vw]" name="message" />
+        <input type="submit" value="Send" class="h-max w-[10vw]" />
     </form>
 </div>

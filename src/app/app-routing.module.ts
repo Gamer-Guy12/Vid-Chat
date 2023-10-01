@@ -9,20 +9,20 @@ import { VidChatMainComponent } from './vid-chat/vid-chat-main/vid-chat-main.com
 
 const routes: Routes = [
   {
-    path: "/chat", 
+    path: "chat", 
     children: [
       {
-        path: "/message",
+        path: "message",
         component: MsgChatMainComponent
       },
       {
-        path: "/video",
+        path: "video",
         component: VidChatMainComponent
       }
     ]
   },
   {
-    path: "/file-share",
+    path: "file-share",
     component: FileShareMainComponent
   }
 ];
