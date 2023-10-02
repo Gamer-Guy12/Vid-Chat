@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { Component, Query } from '@angular/core';
+import { Component } from '@angular/core';
 import { inject } from '@angular/core'
 import { Observable } from 'rxjs'
 import { CollectionReference, Firestore, addDoc, collection, collectionData, Timestamp, orderBy, query } from '@angular/fire/firestore'
