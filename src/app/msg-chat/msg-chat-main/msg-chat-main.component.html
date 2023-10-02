@@ -1,4 +1,7 @@
-<div id="Messages" class="w-screen h-[90vh] bg-slate-700 overlow-y-auto">
+<div
+  id="Messages"
+  class="w-screen h-[90vh] bg-slate-700 overlow-y-auto scroll-auto"
+>
   <app-message *ngFor="let message of chatMessages$ | async">{{
     message.message
   }}</app-message>
