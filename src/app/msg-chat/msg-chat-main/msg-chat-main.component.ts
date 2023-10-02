@@ -8,11 +8,10 @@ import { Component } from '@angular/core';
 export class MsgChatMainComponent {
   username: String = "Username";
   message: String = "";
-  sent: boolean = false;
 
   sendMessage() {
 
-    this.sent = true;
+    
 
   }
 

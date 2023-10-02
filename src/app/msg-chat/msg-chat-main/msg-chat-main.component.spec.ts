@@ -22,18 +22,4 @@ describe('MsgChatMainComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it("should send", () => {
-
-    expect(component.sent)
-      .withContext("before it was clicked")
-      .toBeFalse()
-
-    component.sendMessage()
-
-    expect(component.sent)
-      .withContext("after being clicked")
-      .toBeTrue()
-
-  })
 });
