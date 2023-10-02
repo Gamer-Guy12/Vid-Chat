@@ -1,4 +1,4 @@
-<div id="Messages" class="w-screen h-[90vh] bg-slate-700">
+<div id="Messages" class="w-screen h-[90vh] bg-slate-700 overflow-y-auto">
   <app-message *ngFor="let message of chatMessages$ | async">{{message.message}}</app-message>
 </div>
 <div id="Write" class="w-screen h-[10vh] mb-0 bottom-0 absolute bg-slate-600 flex items-center">

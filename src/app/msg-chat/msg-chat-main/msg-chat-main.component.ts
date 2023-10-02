@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { Component } from '@angular/core';
+import { Component, Query } from '@angular/core';
 import { inject } from '@angular/core'
 import { Observable } from 'rxjs'
 import { CollectionReference, Firestore, addDoc, collection, collectionData, Timestamp, orderBy, query } from '@angular/fire/firestore'
@@ -29,8 +29,9 @@ export class MsgChatMainComponent {
   constructor() {
 
     this.messageCollection = collection(this.firestore, 'Main-Chat')
-  
-    this.chatMessages$ = collectionData(this.messageCollection) as Observable<Item[]>
+
+    const q = query(this.messageCollection, orderBy('createdAt'))
+    this.chatMessages$ = collectionData(q) as Observable<Item[]>
 
   }
 
