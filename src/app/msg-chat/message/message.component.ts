@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./message.component.scss']
 })
 export class MessageComponent {
+  message = ""
 
+  setMessage(_message: string) {
+
+    this.message = _message
+
+  }
 }

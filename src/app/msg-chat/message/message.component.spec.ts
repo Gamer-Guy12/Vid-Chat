@@ -18,4 +18,16 @@ describe('MessageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should set message', () => {
+    expect(component.message)
+      .withContext('without being set')
+      .toEqual("")
+
+    component.setMessage("Hello World")
+
+    expect(component.message)
+      .withContext('after being set')
+      .toEqual("Hello World")
+  })
 });
