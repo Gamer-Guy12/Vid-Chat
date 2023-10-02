@@ -1,12 +1,12 @@
 <div id="Messages" class="w-screen h-[90vh] bg-slate-700">
-  
+  <app-message *ngFor="let message of chatMessages$ | async">{{message.message}}</app-message>
 </div>
 <div id="Write" class="w-screen h-[10vh] mb-0 bottom-0 absolute bg-slate-600 flex items-center">
     <form (ngSubmit)="sendMessage()" class="flex items-center">
         <div class="w-[100vw] h-max flex items-center justify-evenly">
-            <input type="text" [(ngModel)]="username" class="h-max w-[10vw] bg-slate-600 text-white border-white border-4 text-center rounded-md" name="username" />
-            <input type="text" [(ngModel)]="message" class="h-max w-[70vw] bg-slate-600 text-white border-white border-4 roudned-md" name="message" />
-            <input type="submit" value="Send" class="h-max w-[10vw] cursor-pointer text-white border-white border-4 text-center rounded-md" />
+            <input type="text" [(ngModel)]="username" class="h-max w-[10vw] bg-slate-600 text-white border-white border-4 text-center rounded-md" name="username" id="username" />
+            <input type="text" [(ngModel)]="message" class="h-max w-[70vw] bg-slate-600 text-white border-white border-4 roudned-md" name="message" id="message" />
+            <input type="submit" value="Send" class="h-max w-[10vw] cursor-pointer text-white border-white border-4 text-center rounded-md" id="submit" />
         </div>
     </form>
 </div>

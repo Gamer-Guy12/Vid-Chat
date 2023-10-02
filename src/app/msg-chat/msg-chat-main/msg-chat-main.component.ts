@@ -1,4 +1,15 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { Component } from '@angular/core';
+import { inject } from '@angular/core'
+import { Observable } from 'rxjs'
+import { CollectionReference, Firestore, addDoc, collection, collectionData, Timestamp } from '@angular/fire/firestore'
+
+interface Item {
+
+  message: string,
+  createdAt: Timestamp
+
+}
 
 @Component({
   selector: 'app-msg-chat-main',
@@ -7,12 +18,24 @@ import { Component } from '@angular/core';
 })
 export class MsgChatMainComponent {
 
+  chatMessages$: Observable<Item[]>
+  firestore: Firestore = inject(Firestore)
+
   username = "Username";
   message = "";
 
+  messageCollection: CollectionReference
+
+  constructor() {
+
+    this.messageCollection = collection(this.firestore, 'Main-Chat')
+    this.chatMessages$ = collectionData(this.messageCollection) as Observable<Item[]>
+
+  }
+
   sendMessage() {
 
-    this.message = this.message
+    addDoc(this.messageCollection, <Item> {message: this.username + ": " + this.message, createdAt: Timestamp.now()})
 
   }
 
