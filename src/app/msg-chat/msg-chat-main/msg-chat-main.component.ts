@@ -36,6 +36,7 @@ export class MsgChatMainComponent {
   sendMessage() {
 
     addDoc(this.messageCollection, <Item> {message: this.username + ": " + this.message, createdAt: Timestamp.now()})
+    this.message = ''
 
   }
 
