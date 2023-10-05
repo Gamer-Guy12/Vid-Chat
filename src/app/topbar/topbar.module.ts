@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VidChatMainComponent } from './vid-chat-main/vid-chat-main.component';
+import { TopbarComponent } from './topbar/topbar.component';
 
 
 
 @NgModule({
   declarations: [
-    VidChatMainComponent
+    TopbarComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    VidChatMainComponent
+    TopbarComponent
   ]
 })
-export class VidChatModule { }
+export class TopbarModule { }
