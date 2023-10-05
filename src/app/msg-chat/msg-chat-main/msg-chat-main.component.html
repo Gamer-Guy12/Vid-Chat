@@ -1,4 +1,8 @@
-
+<div id="Messages" class="w-screen h-[90vh] bg-slate-700 overflow-y-auto inline-block mb-0 scroll-auto" #messages >
+    <app-message *ngFor="let message of chatMessages$ | async" class="overflow-y-auto flex justify-center">{{
+      message.message
+    }}</app-message>
+</div>
 <div
   id="Write"
   class="w-screen h-[10vh] mt-0 bottom-0 absolute bg-slate-600 flex items-center">
@@ -14,7 +18,7 @@
           bg-slate-600
           text-white
           border-white border-4
-          roudned-md
+          rounded-md
         "
         name="message"
         id="message"
@@ -29,8 +33,4 @@
     </div>
   </form>
 </div>
-<div id="Messages" class="w-screen h-[90vh] bg-slate-700 overflow-y-auto inline-block mb-0">
-  <app-message *ngFor="let message of chatMessages$ | async" class="overflow-y-auto">{{
-    message.message
-  }}</app-message>
-</div>
+

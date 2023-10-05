@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { inject } from '@angular/core'
 import { Observable } from 'rxjs'
 import { CollectionReference, Firestore, addDoc, collection, collectionData, Timestamp, orderBy, query } from '@angular/fire/firestore'
@@ -20,9 +21,11 @@ export class MsgChatMainComponent {
 
   chatMessages$: Observable<Item[]>
   firestore: Firestore = inject(Firestore)
+  @ViewChild('messages') messages:any
 
   username = "Username";
   message = "";
+  id: NodeJS.Timeout | null = null
 
   messageCollection: CollectionReference
 
@@ -39,6 +42,7 @@ export class MsgChatMainComponent {
 
     addDoc(this.messageCollection, <Item> {message: this.username + ": " + this.message, createdAt: Timestamp.now()})
     this.message = ''
+    this.messages.scrollTop = this.messages.scrollHeight
 
   }
 
