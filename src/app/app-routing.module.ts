@@ -5,6 +5,10 @@ import { MsgChatMainComponent } from './msg-chat/msg-chat-main/msg-chat-main.com
 
 const routes: Routes = [
   {
+    path: "",
+    component: MsgChatMainComponent
+  },
+  {
     path: "chat",
     children: [
       {
@@ -12,6 +16,11 @@ const routes: Routes = [
         component: MsgChatMainComponent
       }
     ]
+  },
+  {
+    path: "**",
+    redirectTo: "",
+    pathMatch: "full"
   }
 ];
 

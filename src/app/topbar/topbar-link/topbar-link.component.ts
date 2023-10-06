@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-topbar-link',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./topbar-link.component.scss']
 })
 export class TopbarLinkComponent {
+  // eslint-disable-next-line @angular-eslint/no-input-rename
+  @Input('link') link = ""
+
+  router = inject(Router)
+
+  click() {
+
+    this.router.navigate([this.link])
+
+  }
 
 }
