@@ -8,7 +8,7 @@ import { TopbarLinkComponent } from './topbar-link/topbar-link.component';
 @NgModule({
   declarations: [
     TopbarComponent,
-    TopbarLinkComponent
+    TopbarLinkComponent,
   ],
   imports: [
     CommonModule

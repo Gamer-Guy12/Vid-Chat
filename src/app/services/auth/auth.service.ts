@@ -1,4 +1,4 @@
-import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from '@angular/fire/auth';
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, signOut } from '@angular/fire/auth';
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { Injectable } from '@angular/core';
 
@@ -38,6 +38,12 @@ export class AuthService {
     }
 
     return false
+
+  }
+
+  async logOut() {
+
+    signOut(this.auth)
 
   }
 
