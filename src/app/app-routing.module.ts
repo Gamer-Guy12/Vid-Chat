@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { MsgChatModule } from './msg-chat/msg-chat.module';
 import { MsgChatMainComponent } from './msg-chat/msg-chat-main/msg-chat-main.component';
 
-
 const routes: Routes = [
   {
     path: "chat",

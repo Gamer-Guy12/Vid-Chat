@@ -1,0 +1,171 @@
+{
+  "$schema": "node_modules/nx/schemas/project-schema.json",
+  "name": "Vid-Chat",
+  "projectType": "application",
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "sourceRoot": "src",
+  "prefix": "app",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/vid-chat",
+        "index": "src/index.html",
+        "main": "src/main.ts",
+        "polyfills": [
+          "zone.js"
+        ],
+        "tsConfig": "tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "src/favicon.ico",
+          "src/assets",
+          "src/manifest.webmanifest",
+          "src/manifest.webmanifest"
+        ],
+        "styles": [
+          "src/styles.scss"
+        ],
+        "scripts": [],
+        "serviceWorker": true,
+        "ngswConfigPath": "ngsw-config.json"
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production",
+      "outputs": [
+        "{options.outputPath}"
+      ]
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "Vid-Chat:build:production"
+        },
+        "development": {
+          "browserTarget": "Vid-Chat:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "Vid-Chat:build"
+      }
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "polyfills": [
+          "zone.js",
+          "zone.js/testing"
+        ],
+        "tsConfig": "tsconfig.spec.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "src/favicon.ico",
+          "src/assets",
+          "src/manifest.webmanifest",
+          "src/manifest.webmanifest"
+        ],
+        "styles": [
+          "src/styles.scss"
+        ],
+        "scripts": []
+      }
+    },
+    "deploy": {
+      "executor": "@angular/fire:deploy",
+      "options": {
+        "version": 2,
+        "browserTarget": "Vid-Chat:build:production"
+      }
+    },
+    "lint": {
+      "executor": "@angular-eslint/builder:lint",
+      "options": {
+        "lintFilePatterns": [
+          "src/**/*.ts",
+          "src/**/*.html"
+        ]
+      },
+      "outputs": [
+        "{options.outputFile}"
+      ]
+    },
+    "cypress-run": {
+      "executor": "@cypress/schematic:cypress",
+      "options": {
+        "devServerTarget": "Vid-Chat:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "Vid-Chat:serve:production"
+        }
+      }
+    },
+    "cypress-open": {
+      "executor": "@cypress/schematic:cypress",
+      "options": {
+        "watch": true,
+        "headless": false
+      }
+    },
+    "ct": {
+      "executor": "@cypress/schematic:cypress",
+      "options": {
+        "devServerTarget": "Vid-Chat:serve",
+        "watch": true,
+        "headless": false,
+        "testingType": "component"
+      },
+      "configurations": {
+        "development": {
+          "devServerTarget": "Vid-Chat:serve:development"
+        }
+      }
+    },
+    "e2e": {
+      "executor": "@cypress/schematic:cypress",
+      "options": {
+        "devServerTarget": "Vid-Chat:serve",
+        "watch": true,
+        "headless": false
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "Vid-Chat:serve:production"
+        }
+      }
+    }
+  }
+}
