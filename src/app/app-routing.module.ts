@@ -2,13 +2,26 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MsgChatModule } from './msg-chat/msg-chat.module';
 import { MsgChatMainComponent } from './msg-chat/msg-chat-main/msg-chat-main.component';
-import { TopbarComponent } from './topbar/topbar/topbar.component'
-import { TopbarModule } from './topbar/topbar.module'
+import { AuthModule } from './auth/auth.module'
+import { AuthComponent } from './auth/auth/auth.component'
+import { SignOutComponent } from './auth/sign-out/sign-out.component'
+import { AuthService } from './services/auth/auth.service'
 
 const routes: Routes = [
   {
     path: "",
-    component: TopbarComponent
+    redirectTo: "auth",
+    pathMatch: "full"
+  },
+  {
+    path: "auth",
+    component: AuthComponent,
+    children: [
+      {
+        path: "signout",
+        component: SignOutComponent
+      }
+    ]
   },
   {
     path: "chat",
@@ -27,7 +40,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), MsgChatModule, TopbarModule],
+  providers: [AuthService],
+  imports: [RouterModule.forRoot(routes), MsgChatModule, AuthModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

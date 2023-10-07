@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthComponent } from './auth/auth.component';
-import { AuthService } from '../services/auth/auth.service'
+import { AuthService } from '../services/auth/auth.service';
+import { SignOutComponent } from './sign-out/sign-out.component'
 
 
 @NgModule({
@@ -9,10 +10,15 @@ import { AuthService } from '../services/auth/auth.service'
     AuthService
   ],
   declarations: [
-    AuthComponent
+    AuthComponent,
+    SignOutComponent
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    AuthComponent,
+    SignOutComponent
   ]
 })
 export class AuthModule { }

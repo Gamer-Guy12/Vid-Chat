@@ -1,4 +1,4 @@
-describe('My First Test', () => {
+describe('Test Chat', () => {
   it('Visits the initial project page', () => {
     cy.visit('/')
     cy.title().should('equal', 'VidChat')
