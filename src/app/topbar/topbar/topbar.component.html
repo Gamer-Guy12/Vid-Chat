@@ -1,8 +1,5 @@
 <div id="topbar" class="w-screen h-[5vh] top-0 mt-0 bg-slate-800 flex content-center">
+  <app-topbar-link link="/auth" *ngIf="!signedIn" >Sign In</app-topbar-link>
+  <app-topbar-link link="/auth/signout" *ngIf="signedIn">Sign Out</app-topbar-link>
   <app-topbar-link link="/chat/message" id="chat">Message</app-topbar-link>
-
-  <div class="float-right">
-    <app-topbar-link link="/auth" *ngIf="!signedIn">Sign In</app-topbar-link>
-    <app-topbar-link link="/auth/signout" *ngIf="signedIn">Sign Out</app-topbar-link>
-  </div>
 </div>

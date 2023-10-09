@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/no-input-rename */
 import { Component, Input, inject } from '@angular/core';
 import { Router } from '@angular/router'
 
@@ -9,6 +10,7 @@ import { Router } from '@angular/router'
 export class TopbarLinkComponent {
   // eslint-disable-next-line @angular-eslint/no-input-rename
   @Input('link') link = ""
+  @Input('right') right = false
 
   router = inject(Router)
 

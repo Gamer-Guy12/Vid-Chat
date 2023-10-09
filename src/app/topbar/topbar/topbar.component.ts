@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { AuthService } from '../../services/auth/auth.service'
+import { Auth } from '@angular/fire/auth'
 
 @Component({
   selector: 'app-topbar',
@@ -7,6 +7,6 @@ import { AuthService } from '../../services/auth/auth.service'
   styleUrls: ['./topbar.component.scss']
 })
 export class TopbarComponent {
-  auth: AuthService = inject(AuthService)
-  signedIn = this.auth.isSignedIn()
+  auth: Auth = inject(Auth)
+  signedIn = this.auth.currentUser ? true : false
 }

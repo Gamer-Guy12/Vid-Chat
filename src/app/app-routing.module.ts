@@ -5,7 +5,6 @@ import { MsgChatMainComponent } from './msg-chat/msg-chat-main/msg-chat-main.com
 import { AuthModule } from './auth/auth.module'
 import { AuthComponent } from './auth/auth/auth.component'
 import { SignOutComponent } from './auth/sign-out/sign-out.component'
-import { AuthService } from './services/auth/auth.service'
 
 const routes: Routes = [
   {
@@ -40,7 +39,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  providers: [AuthService],
+  providers: [],
   imports: [RouterModule.forRoot(routes), MsgChatModule, AuthModule],
   exports: [RouterModule]
 })

@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router } from '@angular/router'
+import { Auth } from '@angular/fire/auth'
 
 @Component({
   selector: 'app-sign-out',
@@ -9,7 +9,7 @@ import { Router } from '@angular/router'
 })
 export class SignOutComponent implements OnInit {
 
-  authService: AuthService = inject(AuthService)
+  auth: Auth = inject(Auth)
   router: Router = inject(Router)
 
   ngOnInit(): void {
@@ -18,7 +18,7 @@ export class SignOutComponent implements OnInit {
 
   ngAfterInit() {
 
-    this.authService.logOut()
+    this.auth.signOut()
     this.router.navigate(["/"])
 
   }
