@@ -8,6 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
+  email = ""
+  password = ""
+  repeatPassword = ""
+  username = ""
+
   ngOnInit() {
 
     1+1

@@ -5,6 +5,7 @@ import { SignOutComponent } from './sign-out/sign-out.component'
 import { environment } from '../../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
   imports: [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   providers: [
   ],
