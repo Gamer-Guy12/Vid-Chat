@@ -5,6 +5,7 @@ import { MsgChatMainComponent } from './msg-chat/msg-chat-main/msg-chat-main.com
 import { AuthModule } from './auth/auth.module'
 import { AuthComponent } from './auth/auth/auth.component'
 import { SignOutComponent } from './auth/sign-out/sign-out.component'
+import { SignUpComponent } from './auth/sign-up/sign-up.component'
 
 const routes: Routes = [
   {
@@ -14,11 +15,18 @@ const routes: Routes = [
   },
   {
     path: "auth",
-    component: AuthComponent,
     children: [
+      {
+        path: "",
+        component: AuthComponent
+      },
       {
         path: "signout",
         component: SignOutComponent
+      },
+      {
+        path: "signup",
+        component: SignUpComponent
       }
     ]
   },

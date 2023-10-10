@@ -21,7 +21,8 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
     CommonModule
   ],
   exports: [
-    TopbarComponent
+    TopbarComponent,
+    TopbarLinkComponent
   ]
 })
 export class TopbarModule { }

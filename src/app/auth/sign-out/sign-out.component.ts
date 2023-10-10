@@ -13,13 +13,14 @@ export class SignOutComponent implements OnInit {
   router: Router = inject(Router)
 
   ngOnInit(): void {
-      1+1
+    alert(this.auth.currentUser?.uid)
+    this.auth.signOut()
+    this.router.navigate(["/"])
   }
 
   ngAfterInit() {
 
-    this.auth.signOut()
-    this.router.navigate(["/"])
+    1+1
 
   }
 

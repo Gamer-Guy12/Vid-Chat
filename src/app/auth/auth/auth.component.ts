@@ -18,7 +18,13 @@ export class AuthComponent {
 
   signIn() {
 
-    signInWithEmailAndPassword(this.auth, this.email, this.password).catch(err => alert(err))
+    alert("hi")
+    signInWithEmailAndPassword(this.auth, this.email, this.password).then(val => {
+
+      alert(this.auth.currentUser?.uid)
+
+    }).catch(err => alert(err))
+
 
   }
 

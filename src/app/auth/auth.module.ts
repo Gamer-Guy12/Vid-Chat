@@ -6,23 +6,28 @@ import { environment } from '../../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { FormsModule } from '@angular/forms'
+import { TopbarModule } from '../topbar/topbar.module';
+import { SignUpComponent } from './sign-up/sign-up.component'
 
 @NgModule({
   declarations: [
     AuthComponent,
-    SignOutComponent
+    SignOutComponent,
+    SignUpComponent
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     CommonModule,
-    FormsModule
+    FormsModule,
+    TopbarModule
   ],
   providers: [
   ],
   exports: [
     AuthComponent,
-    SignOutComponent
+    SignOutComponent,
+    SignUpComponent
   ]
 })
 export class AuthModule { }
