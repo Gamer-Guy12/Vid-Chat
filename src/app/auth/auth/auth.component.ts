@@ -18,7 +18,7 @@ export class AuthComponent {
 
   signIn() {
 
-    signInWithEmailAndPassword(this.auth, this.email, this.password)
+    signInWithEmailAndPassword(this.auth, this.email, this.password).catch(err => alert(err))
 
   }
 
