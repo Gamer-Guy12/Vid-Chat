@@ -1,27 +1,24 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { getAuth, signInWithEmailAndPassword } from '@angular/fire/auth'
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent {
 
   email = ""
   password = ""
   repeatPassword = ""
   username = ""
 
-  ngOnInit() {
+  auth = getAuth()
 
-    1+1
+  signIn() {
 
-  }
-
-  ngAfterInit() {
-
-
+    signInWithEmailAndPassword(this.auth, this.email, this.password)
 
   }
 

@@ -1,5 +1,7 @@
 <div class="w-screen h-[95vh] bg-slate-700 flex justify-center">
-    <div  class="rounded-md bg-slate-500 w-[50vw] h-[95vh] flex justify-center">
-      
+    <div (ngSubmit)="signIn()"  class="rounded-md bg-slate-500 w-[50vw] h-[95vh] flex justify-center">
+      <input class="w-[50vw] h-[5vh] mt-5 absolute" placeholder="Email..." type="text" name="email" [(ngModel)]="email" />
+      <input class="w-[50vw] absolute h-[5vh] mt-20" placeholder="Password..." type="password" name="password" [(ngModel)]="password" />
+      <input class="w-[10vw] relative mt-32 h-9 border-white text-white border-4 rounded-md cursor-pointer" type="submit" value="Sign-In" id="submit" />
     </div>
 </div>
