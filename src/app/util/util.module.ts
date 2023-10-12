@@ -16,7 +16,9 @@ import { RightDirective } from './directives/right.directive';
     CommonModule
   ],
   exports: [
-    LinkComponent
+    LinkComponent,
+    RightDirective,
+    TopbarLinkDirective
   ]
 })
 export class UtilModule { }

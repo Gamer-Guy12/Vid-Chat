@@ -1,7 +1,7 @@
 import { Directive, HostBinding } from '@angular/core';
 
 @Directive({
-  selector: '[appTopbarLink]'
+  selector: '[topbarlink]'
 })
 export class TopbarLinkDirective {
 

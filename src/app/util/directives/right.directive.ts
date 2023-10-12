@@ -1,7 +1,7 @@
 import { Directive, HostBinding } from '@angular/core';
 
 @Directive({
-  selector: '[appRight]'
+  selector: '[right]'
 })
 export class RightDirective {
 
