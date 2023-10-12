@@ -39,18 +39,6 @@
           },
           "configurations": {
             "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ],
               "outputHashing": "all"
             },
             "development": {
@@ -82,7 +70,7 @@
             "browserTarget": "Vid-Chat:build"
           }
         },
-        "test": {
+        "karma": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": [
@@ -108,11 +96,60 @@
             "version": 2,
             "browserTarget": "Vid-Chat:build:production"
           }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "Vid-Chat:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "Vid-Chat:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          }
+        },
+        "test": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "Vid-Chat:serve",
+            "watch": true,
+            "headless": false,
+            "testingType": "component"
+          },
+          "configurations": {
+            "development": {
+              "devServerTarget": "Vid-Chat:serve:development"
+            }
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "Vid-Chat:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "Vid-Chat:serve:production"
+            }
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "schematicCollections": [
+      "@cypress/schematic",
+      "@schematics/angular"
+    ]
   }
 }
