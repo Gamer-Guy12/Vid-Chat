@@ -25,7 +25,6 @@ export class MsgChatMainComponent implements OnInit {
 
   username = "Username";
   message = "";
-  id: NodeJS.Timeout | null = null
 
   messageCollection: CollectionReference
 
