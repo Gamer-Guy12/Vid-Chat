@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SignOutComponent } from './sign-out/sign-out.component';
@@ -11,7 +12,8 @@ import { AuthComponent } from './auth/auth.component';
     AuthComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class AuthModule { }

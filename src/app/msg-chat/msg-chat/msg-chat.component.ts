@@ -16,13 +16,19 @@ export class MsgChatComponent {
 
   firestore = inject(Firestore)
   messageCol = collection(this.firestore, 'Msg-Chat')
-  messageQuery = query(this.messageCol, orderBy("createdAt"))
+  messageQuery = query(this.messageCol, orderBy("createdAt", "desc"))
   chatMessages$: Observable<Item[]>
   @ViewChild('messages') private messages!: ElementRef
 
   constructor() {
     this.chatMessages$ = collectionData(this.messageQuery) as Observable<Item[]>
-
+    this.chatMessages$.subscribe(() => {
+      this.messages.nativeElement.scroll({
+        top: this.messages.nativeElement.scrollHeight,
+        left: 0,
+        behavior: 'smooth'
+      });
+    })
   }
 
   username: string = ''
@@ -37,6 +43,11 @@ export class MsgChatComponent {
 
     addDoc(this.messageCol, {message: this.username + ": " + this.message, createdAt: Timestamp.now()})
     this.message = ""
+      this.messages.nativeElement.scroll({
+        top: this.messages.nativeElement.scrollHeight,
+        left: 0,
+        behavior: 'smooth'
+      });
 
   }
 }

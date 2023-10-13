@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-out.component.scss']
 })
 export class SignOutComponent {
-
   auth = inject(Auth)
   router = inject(Router)
 
@@ -16,5 +15,4 @@ export class SignOutComponent {
     this.auth.signOut()
     this.router.navigate([""])
   }
-
 }
