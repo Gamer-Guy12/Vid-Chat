@@ -5,7 +5,7 @@ import { Directive, HostBinding } from '@angular/core';
 })
 export class TopbarLinkDirective {
 
-  @HostBinding('class') class = 'text-lg text-slate-950 cursor-pointer'
+  @HostBinding('class') class = 'text-lg text-white cursor-pointer flex'
 
   constructor() { }
 

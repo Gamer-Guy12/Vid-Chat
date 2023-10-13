@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 
 
 import { CommonModule } from '@angular/common';
@@ -8,7 +9,8 @@ describe('MsgChatComponent', () => {
   beforeEach(() => {
     cy.mount(MsgChatComponent, {
       imports: [
-        CommonModule
+        CommonModule,
+        FormsModule
       ]
     })
   });
