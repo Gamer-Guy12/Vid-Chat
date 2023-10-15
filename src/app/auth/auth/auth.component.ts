@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { IsSignedInService } from 'src/app/util/services/is-signed-in.service';
+import { Component, inject } from '@angular/core';
+import { Auth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -6,10 +9,44 @@ import { Component } from '@angular/core';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent {
-  username: string = ""
+  email: string = ""
   password: string = ""
+  auth = inject(Auth)
+  router = inject(Router)
+  IsSignedInServ = inject(IsSignedInService)
 
-  signIn() {
-    
+  async signIn() {
+    await signInWithEmailAndPassword(this.auth, this.email, this.password).catch(err => {
+      alert("Login Failed")
+      alert(err)
+      return
+    })
+    this.IsSignedInServ.updateSignedIn()
+    this.router.navigate(["chat/message"])
+  }
+
+  async signInWithGoogle() {
+    await signInWithPopup(this.auth, new GoogleAuthProvider()).catch(err => {
+      alert("Login Failed")
+      alert(err)
+      return
+    })
+    this.IsSignedInServ.updateSignedIn()
+
+    this.router.navigate(["chat/message"])
+  }
+
+  async signInWithGithub() {
+    await signInWithPopup(this.auth, new GithubAuthProvider()).catch(err => {
+      alert("Login Failed")
+      alert(err)
+      return
+    })
+    this.IsSignedInServ.updateSignedIn()
+    this.router.navigate(["chat/message"])
+  }
+
+  signUp() {
+    this.router.navigate(["auth/signup"])
   }
 }

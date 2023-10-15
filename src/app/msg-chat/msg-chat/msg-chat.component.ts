@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs';
 import { Component, inject, ViewChild, ElementRef } from '@angular/core';
 import { Firestore, orderBy, collection, query, Timestamp, collectionData, addDoc } from '@angular/fire/firestore';
+import { Auth } from '@angular/fire/auth';
 
 interface Item {
   message: String,
@@ -19,6 +20,7 @@ export class MsgChatComponent {
   messageQuery = query(this.messageCol, orderBy("createdAt", "desc"))
   chatMessages$: Observable<Item[]>
   @ViewChild('messages') private messages!: ElementRef
+  auth = inject(Auth)
 
   constructor() {
     this.chatMessages$ = collectionData(this.messageQuery) as Observable<Item[]>
@@ -29,6 +31,9 @@ export class MsgChatComponent {
         behavior: 'smooth'
       });
     })
+    if (this.auth.currentUser) {
+      this.username = this.auth.currentUser.displayName ? this.auth.currentUser.displayName : ""
+    }
   }
 
   username: string = ''
