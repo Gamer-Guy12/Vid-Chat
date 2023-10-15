@@ -1,27 +1,18 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { Router } from '@angular/router'
-import { Auth } from '@angular/fire/auth'
+import { Component, inject } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-out',
   templateUrl: './sign-out.component.html',
   styleUrls: ['./sign-out.component.scss']
 })
-export class SignOutComponent implements OnInit {
+export class SignOutComponent {
+  auth = inject(Auth)
+  router = inject(Router)
 
-  auth: Auth = inject(Auth)
-  router: Router = inject(Router)
-
-  ngOnInit(): void {
-    alert(this.auth.currentUser?.uid)
+  constructor() {
     this.auth.signOut()
-    this.router.navigate(["/"])
+    this.router.navigate([""])
   }
-
-  ngAfterInit() {
-
-    1+1
-
-  }
-
 }

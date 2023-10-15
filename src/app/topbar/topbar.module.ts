@@ -1,28 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TopbarComponent } from './topbar/topbar.component';
-import { TopbarLinkComponent } from './topbar-link/topbar-link.component';
-import { environment } from '../../environments/environment';
-import { provideAuth, getAuth } from '@angular/fire/auth';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-
+import { UtilModule } from '../util/util.module';
+import { AuthModule } from '@angular/fire/auth';
+import { IsSignedInService } from '../util/services/is-signed-in.service';
 
 @NgModule({
-  providers: [
-
-  ],
   declarations: [
-    TopbarComponent,
-    TopbarLinkComponent,
+    TopbarComponent
   ],
   imports: [
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    CommonModule
+    CommonModule,
+    UtilModule,
+    AuthModule
   ],
   exports: [
-    TopbarComponent,
-    TopbarLinkComponent
+    TopbarComponent
+  ],
+  providers: [
+    IsSignedInService
   ]
 })
 export class TopbarModule { }

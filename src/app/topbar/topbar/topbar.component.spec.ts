@@ -1,22 +1,17 @@
-import { TopbarComponent } from './topbar.component'
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+
+import { CommonModule } from '@angular/common';
+import { TopbarComponent } from './topbar.component';
+import { UtilModule } from 'src/app/util/util.module';
 
 describe('TopbarComponent', () => {
-  let component: TopbarComponent;
-  let fixture: ComponentFixture<TopbarComponent>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [TopbarComponent],
+    cy.mount(TopbarComponent, {
       imports: [
+        CommonModule,
+        UtilModule
       ]
-    });
-    fixture = TestBed.createComponent(TopbarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    })
   });
 });

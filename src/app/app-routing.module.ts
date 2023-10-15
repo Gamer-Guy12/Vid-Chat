@@ -1,28 +1,32 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MsgChatModule } from './msg-chat/msg-chat.module';
-import { MsgChatMainComponent } from './msg-chat/msg-chat-main/msg-chat-main.component';
-import { AuthModule } from './auth/auth.module'
-import { AuthComponent } from './auth/auth/auth.component'
-import { SignOutComponent } from './auth/sign-out/sign-out.component'
-import { SignUpComponent } from './auth/sign-up/sign-up.component'
+import { MsgChatComponent } from './msg-chat/msg-chat/msg-chat.component';
+import { SignOutComponent } from './auth/sign-out/sign-out.component';
+import { AuthModule } from './auth/auth.module';
+import { AuthComponent } from './auth/auth/auth.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
 
 const routes: Routes = [
   {
-    path: "",
-    redirectTo: "auth",
-    pathMatch: "full"
+    path: "chat",
+    children: [
+      {
+        path: "message",
+        component: MsgChatComponent
+      }
+    ]
   },
   {
     path: "auth",
     children: [
       {
-        path: "",
-        component: AuthComponent
-      },
-      {
         path: "signout",
         component: SignOutComponent
+      },
+      {
+        path: "",
+        component: AuthComponent
       },
       {
         path: "signup",
@@ -31,23 +35,13 @@ const routes: Routes = [
     ]
   },
   {
-    path: "chat",
-    children: [
-      {
-        path: "message",
-        component: MsgChatMainComponent
-      }
-    ]
-  },
-  {
-    path: "**",
-    redirectTo: "",
+    path: "",
+    redirectTo: "auth",
     pathMatch: "full"
   }
 ];
 
 @NgModule({
-  providers: [],
   imports: [RouterModule.forRoot(routes), MsgChatModule, AuthModule],
   exports: [RouterModule]
 })

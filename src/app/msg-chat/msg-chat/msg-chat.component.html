@@ -1,0 +1,12 @@
+<div class="w-screen h-[90vh] bg-slate-500 overflow-y-auto inline-block mb-0 scroll-auto" >
+  <app-message *ngFor="let message of chatMessages$ | async" class="overflow-y-auto flex justify-center">{{message.message}}</app-message>
+</div>
+<div id="form" class="bottom-0 w-screen bg-slate-700 flex justify-around h-[5vh] mb-0 absolute">
+  <form (submit)="sendMessage()" >
+    <div id="align" class="flex justify-evenly content-center">
+      <input placeholder="Username..." type="text" name="username" id="username" class="h-[5vh] rounded-md bg-slate-700 border-4 border-white w-[10vw] mr-10 text-white" [(ngModel)]="username" />
+      <input placeholder="Message..." type="text" name="message" class="h-[5vh] rounded-md bg-slate-700 border-4 border-white w-[70vw] text-white" id="message" [(ngModel)]="message" />
+      <input type="submit" id="submit" value="Send" class="w-[10vw] cursor-pointer border-4 border-white rounded-md text-white ml-10" />
+    </div>
+  </form>
+</div>

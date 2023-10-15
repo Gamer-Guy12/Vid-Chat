@@ -1,5 +1,5 @@
-import { Component, OnDestroy } from '@angular/core';
-import { getAuth } from '@angular/fire/auth'
+import { Component, HostListener, OnDestroy, inject } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +7,19 @@ import { getAuth } from '@angular/fire/auth'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnDestroy {
-  title = 'Vid-Chat';
-  auth = getAuth()
 
-  ngOnDestroy() {
+  auth = inject(Auth)
+  ngOnDestroy(): void {
+    this.auth.signOut()
+    alert("Goodbye")
+  }
+
+  @HostListener('window:onbeforeunload')
+  beforeUnloadHandler() {
 
     this.auth.signOut()
-
+    alert("Goodbye")
   }
+
+  title = 'Vid-Chat';
 }

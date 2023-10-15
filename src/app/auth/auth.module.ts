@@ -1,34 +1,32 @@
-
+import { AuthModule as Auth } from '@angular/fire/auth';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SignOutComponent } from './sign-out/sign-out.component';
 import { AuthComponent } from './auth/auth.component';
-import { SignOutComponent } from './sign-out/sign-out.component'
-import { environment } from '../../environments/environment';
-import { provideAuth, getAuth } from '@angular/fire/auth';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { FormsModule } from '@angular/forms'
-import { TopbarModule } from '../topbar/topbar.module';
-import { SignUpComponent } from './sign-up/sign-up.component'
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { IsSignedInService } from '../util/services/is-signed-in.service';
+
+
 
 @NgModule({
+  providers: [
+    IsSignedInService
+  ],
   declarations: [
-    AuthComponent,
     SignOutComponent,
+    AuthComponent,
     SignUpComponent
   ],
   imports: [
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
     CommonModule,
     FormsModule,
-    TopbarModule
-  ],
-  providers: [
+    Auth
   ],
   exports: [
+    SignUpComponent,
     AuthComponent,
-    SignOutComponent,
-    SignUpComponent
+    SignOutComponent
   ]
 })
 export class AuthModule { }

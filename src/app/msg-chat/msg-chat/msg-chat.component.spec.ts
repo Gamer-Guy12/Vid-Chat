@@ -2,12 +2,12 @@ import { FormsModule } from '@angular/forms';
 
 
 import { CommonModule } from '@angular/common';
-import { MessageComponent } from './message.component';
+import { MsgChatComponent } from './msg-chat.component';
 
-describe('MessageComponent', () => {
+describe('MsgChatComponent', () => {
 
   beforeEach(() => {
-    cy.mount(MessageComponent, {
+    cy.mount(MsgChatComponent, {
       imports: [
         CommonModule,
         FormsModule

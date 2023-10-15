@@ -1,13 +1,12 @@
-describe('Test Chat', () => {
-  it('Visits the initial project page', () => {
-    cy.visit('/')
-    cy.title().should('equal', 'VidChat')
+describe("Testing chat", () => {
+  beforeEach(() => {
+    cy.visit('/chat/message')
   })
 
-  it('Visits the message chat', () => {
-    cy.visit('/chat/message')
-    cy.get('#message').type("This is a bot message")
-    cy.get('#username').clear().type('Test Bot')
-    cy.get('#submit').click()
+  it('should send a message', () => {
+    cy.get("#username").clear().type('Test Bot')
+    cy.get("#message").clear().type("This a message from the test bot")
+    cy.get("#submit").click()
   })
+
 })

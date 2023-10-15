@@ -6,4 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./message.component.scss']
 })
 export class MessageComponent {
+
 }

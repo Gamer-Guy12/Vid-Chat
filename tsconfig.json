@@ -1,4 +1,3 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -17,7 +16,6 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "ES2022",
-    "types": ["node"],
     "module": "ES2022",
     "useDefineForClassFields": false,
     "lib": [
@@ -30,12 +28,5 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  },
-  "include": [
-    "src",
-    "node_modules"
-  ],
-  "exclude": [
-      "src/test/javascript/cypress"
-  ]
+  }
 }
