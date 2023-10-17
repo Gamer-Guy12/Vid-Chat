@@ -1,0 +1,11 @@
+<div class="w-screen h-[90vh] bg-slate-500 overflow-y-auto flex mb-0 flex-col">
+  <app-admin-entry [id]="entry.id" *ngFor="let entry of entries$ | async" >{{entry.name}}: {{entry.id}}</app-admin-entry>
+</div>
+<div class="absolute bottom-0 w-screen bg-slate-700 h-[5vh] flex justify-around" >
+  <form class="flex justify-around" (submit)="createChat()">
+    <div id="align" class="flex justify-evenly content-center" >
+      <input [(ngModel)]="name" type="text" id="name" name="name" placeholder="Name of New Chat..." class="w-[75vw] mr-20 bg-slate-700 border-white text-white border-4 rounded-md">
+      <input type="submit" value="Create Chat" id="submit" class="w-[10vw] text-white bg-slate-700 border-4 rounded-md border-white cursor-pointer">
+    </div>
+  </form>
+</div>

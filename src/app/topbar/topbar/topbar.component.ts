@@ -10,4 +10,8 @@ import { Component, inject } from '@angular/core';
 export class TopbarComponent {
   auth = inject(Auth)
   isSignedIn = this.auth.currentUser ? true : false
+
+  click() {
+    this.auth.signOut()
+  }
 }

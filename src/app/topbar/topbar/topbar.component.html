@@ -2,4 +2,9 @@
   <app-link link="/chat/message" topbarlink class="absolute translate-x-5">Message</app-link>
   <app-link *ngIf="!isSignedIn" link="/auth/" topbarlink class="translate-x-16" >Sign In</app-link>
   <!--<app-link topbarlink class="translate-x-24" >Sign Out</app-link>-->
+  <app-link link="/chat/multichat" class="absolute translate-x-24" topbarlink>Your Chats</app-link>
+  <app-link link="/chat/multichat/admin" class="absolute translate-x-32" topbarlink>Manage Chats</app-link>
+  <div class="float-right">
+    <div><button (click)="click()" topbarlink class="absolute translate-x-96">Sign Out</button></div>
+  </div>
 </div>

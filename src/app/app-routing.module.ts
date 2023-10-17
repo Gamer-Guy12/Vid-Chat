@@ -6,6 +6,10 @@ import { SignOutComponent } from './auth/sign-out/sign-out.component';
 import { AuthModule } from './auth/auth.module';
 import { AuthComponent } from './auth/auth/auth.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { AdminComponent } from './multichat/admin/admin.component';
+import { MultichatModule } from './multichat/multichat.module';
+import { HomeComponent } from './multichat/home/home.component';
+import { AdminPageComponent } from './multichat/admin/admin-page/admin-page.component';
 
 const routes: Routes = [
   {
@@ -14,6 +18,23 @@ const routes: Routes = [
       {
         path: "message",
         component: MsgChatComponent
+      },
+      {
+        path: "multichat",
+        children: [
+          {
+            path: "",
+            component: HomeComponent
+          },
+          {
+            path: "admin",
+            component: AdminComponent
+          },
+          {
+            path: "admin/:id",
+            component: AdminPageComponent
+          }
+        ]
       }
     ]
   },
@@ -42,7 +63,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), MsgChatModule, AuthModule],
+  imports: [RouterModule.forRoot(routes), MsgChatModule, AuthModule, MultichatModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
