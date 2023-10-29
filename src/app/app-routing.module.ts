@@ -6,6 +6,9 @@ import { SignOutComponent } from './auth/sign-out/sign-out.component';
 import { AuthModule } from './auth/auth.module';
 import { AuthComponent } from './auth/auth/auth.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { WebrtcModule } from './webrtc/webrtc.module';
+import { HomeComponent } from './webrtc/home/home.component';
+import { CallComponent } from './webrtc/call/call.component';
 
 const routes: Routes = [
   {
@@ -35,6 +38,19 @@ const routes: Routes = [
     ]
   },
   {
+    path: "call",
+    children: [
+      {
+        path: "",
+        component: HomeComponent
+      },
+      {
+        path: ":id",
+        component: CallComponent
+      }
+    ]
+  },
+  {
     path: "",
     redirectTo: "auth",
     pathMatch: "full"
@@ -42,7 +58,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), MsgChatModule, AuthModule],
+  imports: [RouterModule.forRoot(routes), MsgChatModule, AuthModule, WebrtcModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
