@@ -6,9 +6,6 @@ import { SignOutComponent } from './auth/sign-out/sign-out.component';
 import { AuthModule } from './auth/auth.module';
 import { AuthComponent } from './auth/auth/auth.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
-import { ForumHomeComponent } from './forum/forum-home/forum-home.component';
-import { ForumModule } from './forum/forum.module';
-import { ForumComponent } from './forum/forum/forum.component';
 
 const routes: Routes = [
   {
@@ -38,19 +35,6 @@ const routes: Routes = [
     ]
   },
   {
-    path: "forum",
-    children: [
-      {
-        path: "",
-        component: ForumHomeComponent
-      },
-      {
-        path: ":id",
-        component: ForumComponent
-      }
-    ]
-  },
-  {
     path: "",
     redirectTo: "auth",
     pathMatch: "full"
@@ -58,7 +42,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), MsgChatModule, AuthModule, ForumModule],
+  imports: [RouterModule.forRoot(routes), MsgChatModule, AuthModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

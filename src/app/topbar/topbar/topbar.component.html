@@ -1,6 +1,5 @@
 <div class="w-screen h-[5vh] bg-slate-700 flex content-center" id="topbar">
-  <app-link link="/chat/message" topbarlink>Message</app-link>
-  <app-link *ngIf="!isSignedIn" link="/auth/" topbarlink>Sign In</app-link>
+  <app-link link="/chat/message" topbarlink class="absolute translate-x-5">Message</app-link>
+  <app-link *ngIf="!isSignedIn" link="/auth/" topbarlink class="translate-x-16" >Sign In</app-link>
   <!--<app-link topbarlink class="translate-x-24" >Sign Out</app-link>-->
-  <app-link link="/forum" topbarlink>Forums</app-link>
 </div>
