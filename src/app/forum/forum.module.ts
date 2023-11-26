@@ -4,12 +4,14 @@ import { ForumHomeComponent } from './forum-home/forum-home.component';
 import { ForumListingComponent } from './forum-listing/forum-listing.component';
 import { FormsModule } from '@angular/forms';
 import { ForumComponent } from './forum/forum.component';
+import { ForumPostComponent } from './forum-post/forum-post.component';
 
 @NgModule({
   declarations: [
     ForumHomeComponent,
     ForumListingComponent,
-    ForumComponent
+    ForumComponent,
+    ForumPostComponent
   ],
   imports: [
     CommonModule,
