@@ -24,13 +24,6 @@ export class MsgChatComponent {
 
   constructor() {
     this.chatMessages$ = collectionData(this.messageQuery) as Observable<Item[]>
-    this.chatMessages$.subscribe(() => {
-      this.messages.nativeElement.scroll({
-        top: this.messages.nativeElement.scrollHeight,
-        left: 0,
-        behavior: 'smooth'
-      });
-    })
     if (this.auth.currentUser) {
       this.username = this.auth.currentUser.displayName ? this.auth.currentUser.displayName : ""
     }

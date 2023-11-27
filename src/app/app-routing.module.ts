@@ -46,7 +46,12 @@ const routes: Routes = [
       },
       {
         path: ":id",
-        component: ForumComponent
+        children: [
+          {
+            path: "",
+            component: ForumComponent
+          }
+        ]
       }
     ]
   },

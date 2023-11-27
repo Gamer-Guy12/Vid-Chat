@@ -5,6 +5,7 @@ import { ForumListingComponent } from './forum-listing/forum-listing.component';
 import { FormsModule } from '@angular/forms';
 import { ForumComponent } from './forum/forum.component';
 import { ForumPostComponent } from './forum-post/forum-post.component';
+import { UtilModule } from '../util/util.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ForumPostComponent } from './forum-post/forum-post.component';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    UtilModule
   ]
 })
 export class ForumModule { }
