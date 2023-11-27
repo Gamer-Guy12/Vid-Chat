@@ -1,4 +1,4 @@
-import { Firestore, Timestamp, collection, orderBy, query, collectionData } from '@angular/fire/firestore';
+import { Firestore, Timestamp, collection, orderBy, query, collectionData, addDoc } from '@angular/fire/firestore';
 import { Component, OnInit, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IForum } from '../iforum';
@@ -16,8 +16,22 @@ export class ForumHomeComponent {
   messageCol = collection(this.firestore, "Forums")
   messageQuery = query(this.messageCol, orderBy("createdAt", "desc"))
   forums$: Observable<IForum[]>
+  description: string = ""
+  name: string = ""
 
   constructor() {
     this.forums$ = collectionData(this.messageQuery, {idField: "id"}) as Observable<IForum[]>
+  }
+
+  createForum() {
+    let rname = this.name.replace(" ", "")
+    let rd = this.description.replace(" ", "")
+    if (rd === "" || rname === "") {
+      alert("All properties must be set to create a forum")
+      return
+    }
+    addDoc(this.messageCol, { createdAt: Timestamp.now(), name: this.name, description: this.description })
+    this.name = ""
+    this.description = ""
   }
 }
