@@ -1,4 +1,6 @@
-<div class="w-[95vw] bg-slate-700 text-white rounded-md mt-5">
-  <div class="w-[95vw] text-2xl text-center">Replying to: {{post.replyingTo}}</div>
-  <div class="w-[95vw] text-white text-md text-center">{{post.text}}</div>
+<div class="w-[95vw] bg-slate-700 text-white rounded-md mt-5 cursor-pointer" (click)="travel()">
+  <div class="w-[95vw] text-2xl text-center">{{post.title}}</div>
+  <div class="w-[95vw] text-white text-md text-center" *ngIf="post.type === text">{{post.text}}</div>
+  <div class="w-[95vw] text-white text-md text-center" *ngIf="post.type === 'html'" [innerHtml]="post.text"></div>
+  <div class="text-white text-sm w-[95vw] text-center mt-2">Reply</div>
 </div>

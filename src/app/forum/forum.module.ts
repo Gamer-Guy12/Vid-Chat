@@ -6,13 +6,15 @@ import { FormsModule } from '@angular/forms';
 import { ForumComponent } from './forum/forum.component';
 import { ForumPostComponent } from './forum-post/forum-post.component';
 import { UtilModule } from '../util/util.module';
+import { ReplyForumComponent } from './reply-forum/reply-forum.component';
 
 @NgModule({
   declarations: [
     ForumHomeComponent,
     ForumListingComponent,
     ForumComponent,
-    ForumPostComponent
+    ForumPostComponent,
+    ReplyForumComponent
   ],
   imports: [
     CommonModule,

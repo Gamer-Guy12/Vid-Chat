@@ -8,32 +8,58 @@ import { IForumPost } from '../iforum-post';
 import { post } from 'cypress/types/jquery';
 
 @Component({
-  selector: 'app-forum',
-  templateUrl: './forum.component.html',
-  styleUrls: ['./forum.component.scss']
+  selector: 'app-reply-forum',
+  templateUrl: './reply-forum.component.html',
+  styleUrls: ['./reply-forum.component.scss']
 })
-export class ForumComponent {
+export class ReplyForumComponent {
 
   forumID: string = ""
   firestore = inject(Firestore)
   doc: DocumentReference<DocumentData>
   docSnap!: DocumentSnapshot<DocumentData>
-  data: IForum = { name: "Loading...", description: "Loading...", createdAt: Timestamp.now(), id: "Loading..."}
+  data: IForumPost = {
+    title: "Loading...",
+    id: 'Loading...',
+    text: 'Loading...',
+    replyingTo: 'Loading...',
+    forumId: 'Loading',
+    createdAt: Timestamp.now(),
+    type: 'Loading...'
+  }
   posts$: Observable<IForumPost[]>
   text: string = ""
   type: string = "text"
   title = ""
+  replyForumID = ""
 
   constructor(route: ActivatedRoute) {
     route.params.subscribe((params) => {
       this.forumID = params["id"];
+      this.replyForumID = params["replyId"]
+
+      let postCol = collection(this.firestore, "Forum-Posts")
+      let postQuery = query(postCol, where("forumId", "==", this.forumID), where("replyingTo", "==", this.replyForumID), orderBy("createdAt", "asc"))
+      this.posts$ = collectionData(postQuery, {idField: "id"}) as Observable<IForumPost[]>
+
+      this.data = {
+        title: "Loading...",
+        id: 'Loading...',
+        text: 'Loading...',
+        replyingTo: 'Loading...',
+        forumId: 'Loading',
+        createdAt: Timestamp.now(),
+        type: 'Loading...'
+      }
+      this.doc = doc(this.firestore, "Forum-Posts/", this.replyForumID)
+      this.docSet()
     });
 
-    this.doc = doc(this.firestore, "Forums", this.forumID)
+    this.doc = doc(this.firestore, "Forum-Posts/", this.replyForumID)
     this.docSet()
 
     let postCol = collection(this.firestore, "Forum-Posts")
-    let postQuery = query(postCol, where("forumId", "==", this.forumID), where("replyingTo", "==", "Forum"), orderBy("createdAt", "asc"))
+    let postQuery = query(postCol, where("forumId", "==", this.forumID), where("replyingTo", "==", this.replyForumID), orderBy("createdAt", "asc"))
     this.posts$ = collectionData(postQuery, {idField: "id"}) as Observable<IForumPost[]>
 
   }
@@ -41,7 +67,7 @@ export class ForumComponent {
   async docSet() {
 
     this.docSnap = await getDoc(this.doc)
-    this.data = this.docSnap.data() as IForum
+    this.data = this.docSnap.data() as IForumPost
   }
 
   swapType() {
@@ -58,7 +84,7 @@ export class ForumComponent {
       return
     }
     let postCol = collection(this.firestore, "Forum-Posts")
-    addDoc(postCol, {type: this.type, text: this.text, replyingTo: "Forum", forumId: this.forumID, createdAt: Timestamp.now(), title: this.title})
+    addDoc(postCol, {type: this.type, text: this.text, replyingTo: this.replyForumID, forumId: this.forumID, createdAt: Timestamp.now(), title: this.title})
     this.text = ""
     this.title = ""
   }

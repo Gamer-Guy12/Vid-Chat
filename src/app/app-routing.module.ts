@@ -9,6 +9,7 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { ForumHomeComponent } from './forum/forum-home/forum-home.component';
 import { ForumModule } from './forum/forum.module';
 import { ForumComponent } from './forum/forum/forum.component';
+import { ReplyForumComponent } from './forum/reply-forum/reply-forum.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,15 @@ const routes: Routes = [
           {
             path: "",
             component: ForumComponent
+          },
+          {
+            path: "replies",
+            children: [
+              {
+                path: ":replyId",
+                component: ReplyForumComponent
+              }
+            ]
           }
         ]
       }

@@ -5,5 +5,7 @@ export interface IForumPost {
   text: string,
   replyingTo: string,
   forumId: string,
-  createdAt: Timestamp
+  createdAt: Timestamp,
+  type: string,
+  title: string
 }
