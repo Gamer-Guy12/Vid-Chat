@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Component, inject, ViewChild, ElementRef } from '@angular/core';
+import { Component, inject, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { Firestore, orderBy, collection, query, Timestamp, collectionData, addDoc } from '@angular/fire/firestore';
 import { Auth } from '@angular/fire/auth';
 
@@ -13,7 +13,7 @@ interface Item {
   templateUrl: './msg-chat.component.html',
   styleUrls: ['./msg-chat.component.scss']
 })
-export class MsgChatComponent {
+export class MsgChatComponent implements OnInit {
 
   firestore = inject(Firestore)
   messageCol = collection(this.firestore, 'Msg-Chat')
@@ -24,12 +24,25 @@ export class MsgChatComponent {
 
   constructor() {
     this.chatMessages$ = collectionData(this.messageQuery) as Observable<Item[]>
+
+  }
+  ngOnInit() {
     if (this.auth.currentUser) {
       this.username = this.auth.currentUser.displayName ? this.auth.currentUser.displayName : ""
     }
+
+    this.auth.onAuthStateChanged(value => {
+      let temp = this.auth.currentUser?.displayName
+      if (!(temp === null || temp === undefined)) {
+        this.username = temp
+      }
+      else {
+        this.username = ""
+      }
+    })
   }
 
-  username: string = ''
+  username: string  = ''
   message: string = ''
 
   sendMessage() {

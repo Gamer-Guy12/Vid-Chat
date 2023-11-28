@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common'
+import { ProfileComponent } from './profile.component'
 import { FormsModule } from '@angular/forms'
-import { SignUpComponent } from './sign-up.component'
 
-describe('ForumHomeComponent', () => {
+describe('ProfileComponent', () => {
   it('should mount', () => {
-    cy.mount(SignUpComponent, {
+    cy.mount(ProfileComponent, {
       imports: [
         CommonModule,
         FormsModule

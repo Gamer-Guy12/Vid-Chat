@@ -10,6 +10,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { TopbarModule } from './topbar/topbar.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { TopbarModule } from './topbar/topbar.module';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
-    TopbarModule
+    TopbarModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

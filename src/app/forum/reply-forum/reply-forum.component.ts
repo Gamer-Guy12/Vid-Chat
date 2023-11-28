@@ -1,11 +1,13 @@
+import { ProfileComponent } from './../../auth/profile/profile.component';
 import { Component, inject } from '@angular/core';
 import { FirebaseApp } from '@angular/fire/app';
 import { DocumentData, DocumentReference, DocumentSnapshot, Firestore, LoadBundleTask, QueryOrderByConstraint, Timestamp, collection, collectionData, doc, getDoc, query, where, orderBy, addDoc } from '@angular/fire/firestore';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IForum } from '../iforum';
 import { Observable } from 'rxjs';
 import { IForumPost } from '../iforum-post';
 import { post } from 'cypress/types/jquery';
+import { Auth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-reply-forum',
@@ -25,13 +27,16 @@ export class ReplyForumComponent {
     replyingTo: 'Loading...',
     forumId: 'Loading',
     createdAt: Timestamp.now(),
-    type: 'Loading...'
+    type: 'Loading...',
+    creator: "Loading..."
   }
   posts$: Observable<IForumPost[]>
   text: string = ""
   type: string = "text"
   title = ""
   replyForumID = ""
+  auth = inject(Auth)
+  router = inject(Router)
 
   constructor(route: ActivatedRoute) {
     route.params.subscribe((params) => {
@@ -49,7 +54,8 @@ export class ReplyForumComponent {
         replyingTo: 'Loading...',
         forumId: 'Loading',
         createdAt: Timestamp.now(),
-        type: 'Loading...'
+        type: 'Loading...',
+        creator: "Loading..."
       }
       this.doc = doc(this.firestore, "Forum-Posts/", this.replyForumID)
       this.docSet()
@@ -84,9 +90,16 @@ export class ReplyForumComponent {
       return
     }
     let postCol = collection(this.firestore, "Forum-Posts")
-    addDoc(postCol, {type: this.type, text: this.text, replyingTo: this.replyForumID, forumId: this.forumID, createdAt: Timestamp.now(), title: this.title})
+    addDoc(postCol, {type: this.type, text: this.text, replyingTo: this.replyForumID, forumId: this.forumID, createdAt: Timestamp.now(), title: this.title, creator: this.auth.currentUser?.displayName})
     this.text = ""
     this.title = ""
+  }
+
+  navigate() {
+    if (this.data.replyingTo === "Forum")
+      this.router.navigate(["forum", this.data.forumId])
+    else
+      this.router.navigate(["forum", this.data.forumId, "replies", this.data.replyingTo])
   }
 
 }

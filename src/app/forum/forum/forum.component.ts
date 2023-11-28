@@ -6,6 +6,7 @@ import { IForum } from '../iforum';
 import { Observable } from 'rxjs';
 import { IForumPost } from '../iforum-post';
 import { post } from 'cypress/types/jquery';
+import { Auth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-forum',
@@ -23,6 +24,7 @@ export class ForumComponent {
   text: string = ""
   type: string = "text"
   title = ""
+  auth = inject(Auth)
 
   constructor(route: ActivatedRoute) {
     route.params.subscribe((params) => {
@@ -58,7 +60,7 @@ export class ForumComponent {
       return
     }
     let postCol = collection(this.firestore, "Forum-Posts")
-    addDoc(postCol, {type: this.type, text: this.text, replyingTo: "Forum", forumId: this.forumID, createdAt: Timestamp.now(), title: this.title})
+    addDoc(postCol, {type: this.type, text: this.text, replyingTo: "Forum", forumId: this.forumID, createdAt: Timestamp.now(), title: this.title, creator: this.auth.currentUser?.displayName})
     this.text = ""
     this.title = ""
   }

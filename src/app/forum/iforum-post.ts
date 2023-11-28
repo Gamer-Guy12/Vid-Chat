@@ -7,5 +7,6 @@ export interface IForumPost {
   forumId: string,
   createdAt: Timestamp,
   type: string,
-  title: string
+  title: string,
+  creator: string
 }

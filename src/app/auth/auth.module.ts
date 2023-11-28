@@ -1,32 +1,28 @@
-import { AuthModule as Auth } from '@angular/fire/auth';
-import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SignOutComponent } from './sign-out/sign-out.component';
-import { AuthComponent } from './auth/auth.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { AuthRedirectComponent } from './auth-redirect/auth-redirect.component';
+import { FormsModule } from '@angular/forms';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { IsSignedInService } from '../util/services/is-signed-in.service';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
 @NgModule({
-  providers: [
-    IsSignedInService
-  ],
   declarations: [
-    SignOutComponent,
-    AuthComponent,
-    SignUpComponent
+    SignInComponent,
+    AuthRedirectComponent,
+    SignUpComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
-    FormsModule,
-    Auth
+    FormsModule
   ],
   exports: [
+    AuthRedirectComponent,
     SignUpComponent,
-    AuthComponent,
-    SignOutComponent
+    ProfileComponent
   ]
 })
 export class AuthModule { }

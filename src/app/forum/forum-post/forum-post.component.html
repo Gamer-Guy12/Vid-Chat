@@ -1,5 +1,5 @@
 <div class="w-[95vw] bg-slate-700 text-white rounded-md mt-5 cursor-pointer" (click)="travel()">
-  <div class="w-[95vw] text-2xl text-center">{{post.title}}</div>
+  <div class="w-[95vw] text-2xl text-center"><div class="text-white text-2xl">{{post.title}}</div><div class="text-white text-sm text-center">Poster: {{post.creator}}</div></div>
   <div class="w-[95vw] text-white text-md text-center" *ngIf="post.type === text">{{post.text}}</div>
   <div class="w-[95vw] text-white text-md text-center" *ngIf="post.type === 'html'" [innerHtml]="post.text"></div>
   <div class="text-white text-sm w-[95vw] text-center mt-2">Reply</div>
