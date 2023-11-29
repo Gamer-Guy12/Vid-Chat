@@ -12,13 +12,15 @@ export class AuthRedirectComponent implements OnInit {
   auth = inject(Auth)
 
   ngOnInit() {
-    if (this.auth.currentUser)
+    if (this.auth.currentUser) {
       return
+    }
 
     this.router.navigate(["auth"])
 
     this.router.events.subscribe(value => {
       if (value.type === EventType.NavigationEnd && (value.url !== "/auth/signup")) {
+
         if (this.auth.currentUser)
           return
 

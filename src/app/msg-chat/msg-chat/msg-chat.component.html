@@ -1,5 +1,5 @@
 <div class="w-screen h-[90vh] bg-slate-500 overflow-y-auto inline-block mb-0 scroll-auto" >
-  <app-message *ngFor="let message of chatMessages$ | async" class="overflow-y-auto flex justify-center">{{message.message}}</app-message>
+  <app-message *ngFor="let message of chatMessages$ | async" class="overflow-y-auto flex justify-center"><img alt="">{{message.message}}</app-message>
 </div>
 <div id="form" class="bottom-0 w-screen bg-slate-700 flex justify-around h-[5vh] mb-0 absolute">
   <form (submit)="sendMessage()" >

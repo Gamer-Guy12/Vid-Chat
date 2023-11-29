@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, reauthenticateWithPopup, updateProfile } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,6 +14,18 @@ export class SignUpComponent {
   password = ""
   confirmPassword = ""
   username = ""
+  profileUrl = ""
+
+  isValidUrl = (urlString: string) => {
+		let url;
+		try {
+	      	url =new URL(urlString);
+	    }
+	    catch(e){
+	      return false;
+	    }
+	    return url.protocol === "http:" || url.protocol === "https:";
+	}
 
   signUp() {
     if (this.password !== this.confirmPassword) {
@@ -32,9 +44,15 @@ export class SignUpComponent {
       alert("Username required")
       return
     }
+
+    if (!this.isValidUrl(this.profileUrl)) {
+      alert("Profile url must be a valid url")
+      return
+    }
     createUserWithEmailAndPassword(this.auth, this.email, this.password).then(async (value) => {
       await updateProfile(value.user, {
-        displayName: this.username
+        displayName: this.username,
+        photoURL: this.profileUrl
       })
       this.router.navigate([""])
     }).catch(err => {

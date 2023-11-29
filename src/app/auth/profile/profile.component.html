@@ -4,7 +4,7 @@
       <input type="text" [(ngModel)]="username" placeholder="Username..." name="username" class="text-white h-[4vh] w-[35vw] border-4 border-white rounded-md bg-slate-600">
       <input type="submit" value="Update Profile" class="w-[10vw] text-white rounded-full border-4 border-white bg-slate-600 mt-10 cursor-pointer">
     </form>
-    <div class="cursor-pointer text-white rounded-full text-center border-4 border-white mt-96 w-[10vw]">
+    <div class="cursor-pointer text-white rounded-full text-center border-4 border-white mt-96 w-[10vw]" (click)="signOut()">
       Sign Out
     </div>
   </div>
